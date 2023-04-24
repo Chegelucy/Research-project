@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>search bar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: lightpink;
+        }
+
+        .box {
+            height: 30px;
+            display: flex;
+            cursor: pointer;
+            padding: 10px 20px;
+            background: #ffff;
+            border-radius: 30px;
+            align-items: center;
+            box-shadow: 0 10px 25px;
+        }
+
+        .box:hover input {
+            width: 400px;
+
+        }
+
+        .box input {
+            width: 0;
+            outline: none;
+            border: none;
+            font-weight: 600;
+            transition: 0.8s;
+            background: transparent;
+        }
+
+        .box a.fas {
+            color: black;
+            font-size: 18px;
+        }
+
+        .account {
+            position: absolute;
+            top: 1%;
+            right: 1%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: fit-content;
+            padding: 0 20px;
+        }
+
+
+    </style>
+</head>
+<body>
+{% if 'username' not in session %}
+<div class="account">
+    <a class="link" href="{{ url_for('signup') }}">
+        <button>Sign up</button>
+    </a><br>
+    <a href="{{ url_for('login') }}">
+        <button>login</button>
+    </a>
+</div>
+{% else %}
+<div class="account">
+    <p style="margin-right: 10px;"> {{session['username']}} </p>
+    <a class="link" href="{{ url_for('logout') }}">
+        <button>logout</button>
+    </a>
+</div>
+{% endif %}
+<div class="box">
+    <input placeholder="search..." type="text">
+    <a href="#">
+        <i class="fas fa-search"></i>
+    </a>
+
+</div>
+</body>
+</html>

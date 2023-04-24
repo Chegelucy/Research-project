@@ -1,0 +1,38 @@
+<head>
+    <title>Signup</title>
+</head>
+<body>
+{% if errors %}
+<div class="popup" style="color: red; list-style: none">
+    {% for error in errors %}
+    <p>{{ error }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+<div class="signup">
+    <h1>Sign Up</h1>
+    <div class="signup-card">
+        <form action="{{ url_for('signup') }}" method="post">
+            <label for="username">Username:</label>
+            <input id="username" name="username" required type="text"><br><br>
+            <label for="email">Email:</label>
+            <input id="email" name="email" required type="email"><br><br>
+            <label for="password1">Password:</label>
+            <input id="password1" name="password1" required type="password"><br><br>
+            <label for="password2">Confirm Password:</label>
+            <input id="password2" name="password2" required type="password"><br><br>
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+    <p>Have an account? <a href="{{ url_for('login') }}">
+        <button>login</button>
+    </a></p>
+    <p>Forgot your password? <a href="{{ url_for('change_password') }}">
+        <button>Change Password</button>
+    </a></p>
+</div>
+</body>
+
+
+
+

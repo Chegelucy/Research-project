@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>cart</title>
+    @import url
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'poppins'
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            height: 90 pv;
+            width: 380px;
+            border-radius: 10px;
+            box-shadow: 0px, 0px, 10px gray;
+        }
+
+        .header {
+            height: 10vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            border-bottom: 1px solid #ccc;
+            padding: 0px 20px;
+        }
+
+        span {
+            height: 30px;
+            width: 30px;
+            border-radius: 30px;
+            background-color: orangered;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .product {
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            height: 200px;
+            border: 1px solid #ccc;
+            width: 95%;
+            margin-top: 100px;
+            padding: 10px;
+        }
+
+        .inner, #img {
+            width: 50%;
+        }
+
+        img {
+            height: 170px;
+        }
+
+        h3, h4 {
+            padding: 0;
+            margin: 0;
+        }
+
+        button {
+            border: none;
+            border-radius: 5px;
+            background-color: orangered;
+            padding: 7px 25px;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #333;
+            cursor: pointer;
+        }
+
+        .account {
+            position: absolute;
+            top: 1%;
+            right: 1%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: fit-content;
+            padding: 0 20px;
+        }
+
+    </style>
+</head>
+<body>
+{% if 'username' not in session %}
+<div class="account">
+    <a class="link" href="{{ url_for('signup') }}">
+        <button>Sign up</button>
+    </a><br>
+    <a href="{{ url_for('login') }}">
+        <button>login</button>
+    </a>
+</div>
+{% else %}
+<div class="account">
+    <p style="margin-right: 10px;"> {{session['username']}} </p>
+    <a class="link" href="{{ url_for('logout') }}">
+        <button>logout</button>
+    </a>
+</div>
+{% endif %}
+<div class="container">
+    <div class="header">
+        <span id="cart">0</span>
+
+    </div>
+    <div class="product">
+        <div class="box">
+            <div class="inner">
+                <p>rings</p>
+                <h4>ksh.699.00</h4>
+                <button id="btn" type="submit">add to cart</button>
+            </div>
+        </div>
+        <div id="img">
+            <img class="img" src="../static/images/latest product2.jpeg.jpg">
+        </div>
+    </div>
+</div>
+<script>
+    const cart = document.getElementById(cart);
+    document.getElementById("btn").onclick = function add_item() {
+        const item = cart.innerText;
+        cart.innerText = parseInt(item, 10) + 1
+    }
+
+</script>
+</body>
+</html>

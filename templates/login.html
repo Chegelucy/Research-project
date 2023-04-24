@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+{% if error %}
+<p class="error"> {{error}}</p>
+{% endif %}
+<div class="form">
+    <form action="{{ url_for('login') }}" method="POST">
+        <h2>Login Here</h2>
+        <input id="username" name="username" placeholder="Enter sername Here" required type="text">
+        <input id="password" name="password" placeholder="Enter Password Here" required type="password">
+        <button class="btnn" type="submit"> log in</button>
+        <div class="link">
+            <p>Don't have an account?</p><br>
+            <a class="link" href="{{ url_for('signup') }}">Sign up here </a><br>
+            <p>Forgot your password? <br><a href="{{ url_for('change_password') }}">Change Password</a></p>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
